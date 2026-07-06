@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+:root {
+  --sea-deep: #0a3d5c;
+  --sea: #0e6ba8;
+  --turquoise: #16c0b0;
+  --sand: #f4e4c1;
+  --gold: #d4a24e;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #0a3d5c;
+  background: #ffffff;
+}
+
+/* Плавная анимация появления */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fadeUp {
+  animation: fadeUp 0.9s ease forwards;
+}
+
+.animate-delay-1 { animation-delay: 0.15s; opacity: 0; }
+.animate-delay-2 { animation-delay: 0.3s; opacity: 0; }
+.animate-delay-3 { animation-delay: 0.45s; opacity: 0; }
+
+/* Красивый скролл */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #eef6fb; }
+::-webkit-scrollbar-thumb { background: #16c0b0; border-radius: 10px; }
