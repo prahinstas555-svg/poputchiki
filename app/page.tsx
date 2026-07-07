@@ -4,9 +4,18 @@ import { useState, useEffect } from 'react'
 import { supabase } from '../lib/supabase'
 import { useRouter } from 'next/navigation'
 
+const CITIES = [
+  "Симферополь", "Севастополь", "Ялта", "Керчь", "Евпатория",
+  "Феодосия", "Джанкой", "Алушта", "Бахчисарай", "Саки",
+  "Судак", "Армянск", "Красноперекопск", "Белогорск", "Щёлкино",
+  "Гурзуф", "Коктебель", "Николаевка", "Черноморское", "Форос"
+]
+
 export default function Home() {
   const router = useRouter()
   const [user, setUser] = useState<any>(null)
+  const [from, setFrom] = useState("Симферополь")
+  const [to, setTo] = useState("Ялта")
 
   useEffect(() => {
     supabase.auth.getUser().then(({ data }) => {
@@ -19,6 +28,11 @@ export default function Home() {
     setUser(null)
     router.refresh()
   }
+
+  const handleSearch = () => {
+    router.push(`/trips?from=${encodeURIComponent(from)}&to=${encodeURIComponent(to)}`)
+  }
+
   return (
     <main className="min-h-screen bg-white overflow-hidden">
       {/* ===== ШАПКА ===== */}
@@ -111,25 +125,45 @@ export default function Home() {
           </div>
         </div>
 
+        {/* ===== ПОИСКОВАЯ СТРОКА ===== */}
         <div className="animate-fadeUp animate-delay-3 relative max-w-3xl mx-auto mt-16 bg-white rounded-3xl shadow-2xl shadow-cyan-900/10 border border-slate-100 p-3 flex flex-col md:flex-row gap-3">
           <div className="flex-1 flex items-center gap-3 px-5 py-4 rounded-2xl hover:bg-slate-50 transition">
             <span className="text-[#16c0b0] text-xl">📍</span>
-            <div className="text-left">
+            <div className="text-left w-full">
               <div className="text-xs text-slate-400 font-medium">Откуда</div>
-              <div className="font-semibold text-[#0a3d5c]">Симферополь</div>
+              <select
+                value={from}
+                onChange={(e) => setFrom(e.target.value)}
+                className="font-semibold text-[#0a3d5c] bg-transparent outline-none cursor-pointer w-full"
+              >
+                {CITIES.map((c) => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+              </select>
             </div>
           </div>
           <div className="hidden md:block w-px bg-slate-100"></div>
           <div className="flex-1 flex items-center gap-3 px-5 py-4 rounded-2xl hover:bg-slate-50 transition">
             <span className="text-[#0e6ba8] text-xl">🏁</span>
-            <div className="text-left">
+            <div className="text-left w-full">
               <div className="text-xs text-slate-400 font-medium">Куда</div>
-              <div className="font-semibold text-[#0a3d5c]">Ялта</div>
+              <select
+                value={to}
+                onChange={(e) => setTo(e.target.value)}
+                className="font-semibold text-[#0a3d5c] bg-transparent outline-none cursor-pointer w-full"
+              >
+                {CITIES.map((c) => (
+                  <option key={c} value={c}>{c}</option>
+                ))}
+              </select>
             </div>
           </div>
-          <a href="/trips" className="bg-gradient-to-r from-[#0e6ba8] to-[#16c0b0] text-white px-8 py-4 rounded-2xl font-semibold shadow-lg shadow-cyan-500/30 hover:scale-105 transition flex items-center justify-center">
+          <button
+            onClick={handleSearch}
+            className="bg-gradient-to-r from-[#0e6ba8] to-[#16c0b0] text-white px-8 py-4 rounded-2xl font-semibold shadow-lg shadow-cyan-500/30 hover:scale-105 transition flex items-center justify-center"
+          >
             Искать 🔍
-          </a>
+          </button>
         </div>
       </section>
 
@@ -209,20 +243,7 @@ export default function Home() {
             </div>
             <span className="font-bold text-[#0a3d5c]">Ялос</span>
           </div>
-          <p>© 2026 Ялос — попутчики Крыма. Сделано с ❤️ в Крыму.</p>
-        </div>
-      </footer>
-            {/* ===== ПОДВАЛ ===== */}
-      <footer className="border-t border-slate-100 py-10 px-6">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-sm">
-          <div className="flex items-center gap-2">
-            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#0e6ba8] to-[#16c0b0] flex items-center justify-center text-white font-bold text-sm">
-              Я
-            </div>
-            <span className="font-bold text-[#0a3d5c]">Ялос</span>
-          </div>
 
-          {/* Кнопка ВКонтакте */}
           <a
             href="https://vk.com/yaloscrim"
             target="_blank"
