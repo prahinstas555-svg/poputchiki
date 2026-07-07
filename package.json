@@ -8,8 +8,7 @@
   "start": "next start",
   "start:prod": "node server.js",
   "lint": "next lint"
-}
-  },
+},
   "dependencies": {
     "@supabase/supabase-js": "^2.110.0",
     "next": "16.2.10",
