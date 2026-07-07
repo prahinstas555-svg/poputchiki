@@ -167,19 +167,58 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ===== КАК РАБОТАЕТ ===== */}
+            {/* ===== КАК РАБОТАЕТ ===== */}
       <section id="how" className="py-24 px-6 bg-gradient-to-b from-white to-cyan-50/40">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl font-extrabold text-center text-[#0a3d5c] mb-4">
             Как это работает
           </h2>
-          <p className="text-center text-slate-500 mb-16 text-lg">Три простых шага до поездки</p>
+          <p className="text-center text-slate-500 mb-16 text-lg">
+            Два простых способа найти попутку по Крыму
+          </p>
 
+          {/* Два сценария */}
+          <div className="grid md:grid-cols-2 gap-8 mb-16">
+            {/* Пассажир */}
+            <div className="bg-white rounded-3xl p-8 shadow-xl shadow-cyan-900/5 border-2 border-cyan-100">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-50 to-blue-50 flex items-center justify-center text-3xl mb-5">
+                🙋
+              </div>
+              <h3 className="text-2xl font-bold text-[#0a3d5c] mb-2">Вы пассажир?</h3>
+              <p className="text-slate-500 leading-relaxed mb-5">
+                Найдите поездку от водителя или оставьте свою заявку — водители сами вам напишут.
+              </p>
+              <div className="flex flex-col gap-2">
+                <a href="/trips" className="text-[#0e6ba8] font-semibold hover:underline">🚗 Найти поездку →</a>
+                <a href="/request" className="text-[#0e6ba8] font-semibold hover:underline">📝 Оставить заявку →</a>
+              </div>
+            </div>
+
+            {/* Водитель */}
+            <div className="bg-white rounded-3xl p-8 shadow-xl shadow-cyan-900/5 border-2 border-cyan-100">
+              <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-cyan-50 to-blue-50 flex items-center justify-center text-3xl mb-5">
+                🚙
+              </div>
+              <h3 className="text-2xl font-bold text-[#0a3d5c] mb-2">Вы водитель?</h3>
+              <p className="text-slate-500 leading-relaxed mb-5">
+                Предложите свою поездку или найдите пассажиров, которым нужно в вашу сторону.
+              </p>
+              <div className="flex flex-col gap-2">
+                <a href="/offer" className="text-[#0e6ba8] font-semibold hover:underline">🚙 Предложить поездку →</a>
+                <a href="/requests" className="text-[#0e6ba8] font-semibold hover:underline">🙋 Найти пассажиров →</a>
+              </div>
+            </div>
+          </div>
+
+          {/* 3 шага */}
+          <p className="text-center text-slate-500 mb-10 text-lg font-medium">
+            И всего 3 простых шага до поездки:
+          </p>
           <div className="grid md:grid-cols-3 gap-8">
             {[
-              { icon: "🔎", title: "Найди поездку", text: "Выбери маршрут и дату. Смотри доступные поездки от водителей рядом." },
-              { icon: "💬", title: "Забронируй место", text: "Забронируй в один клик и свяжись с водителем в чате приложения." },
-              { icon: "🚗", title: "Поехали!", text: "Встречайтесь и отправляйтесь в путь. Дели расходы честно и удобно." },
+              { icon: "🔎", title: "1. Найдите вариант", text: "Выберите поездку водителя или заявку пассажира по нужному маршруту." },
+              { icon: "📞", title: "2. Свяжитесь", text: "Позвоните или напишите напрямую и договоритесь о времени, месте и цене." },
+              { icon: "🚗", title: "3. Поехали!", text: "Встречайтесь и отправляйтесь в путь. Всё честно и по договорённости." },
             ].map((item, i) => (
               <div
                 key={i}
