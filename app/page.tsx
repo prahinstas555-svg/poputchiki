@@ -212,6 +212,32 @@ export default function Home() {
           <p>© 2026 Ялос — попутчики Крыма. Сделано с ❤️ в Крыму.</p>
         </div>
       </footer>
+            {/* ===== ПОДВАЛ ===== */}
+      <footer className="border-t border-slate-100 py-10 px-6">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-sm">
+          <div className="flex items-center gap-2">
+            <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-[#0e6ba8] to-[#16c0b0] flex items-center justify-center text-white font-bold text-sm">
+              Я
+            </div>
+            <span className="font-bold text-[#0a3d5c]">Ялос</span>
+          </div>
+
+          {/* Кнопка ВКонтакте */}
+          <a
+            href="https://vk.com/yaloscrim"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-[#0077FF] text-white px-5 py-2.5 rounded-full font-semibold text-sm shadow-lg shadow-blue-500/30 hover:scale-105 transition"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12.785 16.241s.288-.032.436-.194c.136-.148.132-.427.132-.427s-.02-1.304.576-1.496c.588-.19 1.341 1.26 2.14 1.818.605.422 1.064.33 1.064.33l2.137-.03s1.117-.069.588-.964c-.043-.073-.308-.661-1.588-1.87-1.34-1.264-1.16-1.059.453-3.246.983-1.332 1.376-2.145 1.253-2.493-.117-.332-.84-.244-.84-.244l-2.406.015s-.178-.025-.31.056c-.13.079-.212.262-.212.262s-.382 1.03-.89 1.907c-1.07 1.85-1.499 1.948-1.674 1.834-.407-.266-.305-1.075-.305-1.65 0-1.794.267-2.541-.521-2.733-.262-.063-.454-.105-1.123-.112-.858-.009-1.585.003-1.996.208-.274.136-.485.44-.356.457.159.022.519.099.71.365.246.343.237 1.114.237 1.114s.142 2.11-.331 2.371c-.325.18-.77-.187-1.725-1.865-.489-.859-.859-1.81-.859-1.81s-.071-.176-.199-.27c-.154-.114-.37-.15-.37-.15l-2.286.015s-.343.01-.469.16c-.112.132-.009.406-.009.406s1.79 4.191 3.817 6.302c1.858 1.936 3.968 1.81 3.968 1.81z"/>
+            </svg>
+            Мы во ВКонтакте
+          </a>
+
+          <p>© 2026 Ялос — попутчики Крыма. Сделано с ❤️ в Крыму.</p>
+        </div>
+      </footer>
       <footer style={{ textAlign: 'center', padding: '20px', color: '#888', fontSize: '14px' }}>
         <p>Создатель проекта: Станислав</p>
         <p>Для связи: <a href="https://t.me/volskzz" target="_blank">Telegram @volskzz</a></p>
