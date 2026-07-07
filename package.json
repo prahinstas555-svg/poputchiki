@@ -25,4 +25,3 @@
     "typescript": "^5"
   }
 }
-"start:prod": "next start -p 3000"
