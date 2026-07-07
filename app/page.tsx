@@ -33,8 +33,9 @@ export default function Home() {
             </span>
           </div>
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+            <a href="/trips" className="hover:text-[#0e6ba8] transition">Поездки</a>
+            <a href="/requests" className="hover:text-[#0e6ba8] transition">Заявки</a>
             <a href="#how" className="hover:text-[#0e6ba8] transition">Как работает</a>
-            <a href="#why" className="hover:text-[#0e6ba8] transition">Преимущества</a>
           </nav>
           {user ? (
             <div className="flex items-center gap-3">
@@ -93,12 +94,19 @@ export default function Home() {
             Из Симферополя в Ялту, из Керчи в Севастополь — быстро, удобно и недорого.
           </p>
 
-          <div className="animate-fadeUp animate-delay-3 mt-10 flex flex-col sm:flex-row gap-4 justify-center">
-            <a href="/trips" className="bg-gradient-to-r from-[#0e6ba8] to-[#16c0b0] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-xl shadow-cyan-500/30 hover:scale-105 transition">
-              Найти поездку
+          {/* ===== 4 БОЛЬШИЕ КНОПКИ ===== */}
+          <div className="animate-fadeUp animate-delay-3 mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+            <a href="/trips" className="bg-gradient-to-r from-[#0e6ba8] to-[#16c0b0] text-white px-6 py-5 rounded-2xl font-semibold text-lg shadow-xl shadow-cyan-500/30 hover:scale-105 transition">
+              🚗 Найти поездку
             </a>
-            <a href="/offer" className="bg-white text-[#0a3d5c] px-8 py-4 rounded-full font-semibold text-lg border-2 border-slate-200 hover:border-[#16c0b0] transition">
-              Предложить поездку
+            <a href="/requests" className="bg-white text-[#0a3d5c] px-6 py-5 rounded-2xl font-semibold text-lg border-2 border-[#16c0b0] hover:bg-cyan-50 transition">
+              🙋 Ищу водителя
+            </a>
+            <a href="/offer" className="bg-white text-[#0a3d5c] px-6 py-5 rounded-2xl font-semibold text-lg border-2 border-slate-200 hover:border-[#16c0b0] transition">
+              🚙 Предложить поездку
+            </a>
+            <a href="/request" className="bg-white text-[#0a3d5c] px-6 py-5 rounded-2xl font-semibold text-lg border-2 border-slate-200 hover:border-[#16c0b0] transition">
+              📝 Оставить заявку
             </a>
           </div>
         </div>
@@ -186,9 +194,9 @@ export default function Home() {
           <p className="text-cyan-100 text-lg mb-8">
             Присоединяйся к Ялос — сообществу путешественников Крыма.
           </p>
-          <button className="bg-white text-[#0e6ba8] px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition">
+          <a href="/login" className="inline-block bg-white text-[#0e6ba8] px-10 py-4 rounded-full font-bold text-lg shadow-xl hover:scale-105 transition">
             Начать бесплатно
-          </button>
+          </a>
         </div>
       </section>
 
@@ -204,7 +212,7 @@ export default function Home() {
           <p>© 2026 Ялос — попутчики Крыма. Сделано с ❤️ в Крыму.</p>
         </div>
       </footer>
-            <footer style={{ textAlign: 'center', padding: '20px', color: '#888', fontSize: '14px' }}>
+      <footer style={{ textAlign: 'center', padding: '20px', color: '#888', fontSize: '14px' }}>
         <p>Создатель проекта: Станислав</p>
         <p>Для связи: <a href="https://t.me/volskzz" target="_blank">Telegram @volskzz</a></p>
         <p>© 2026</p>
