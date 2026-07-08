@@ -1,7 +1,7 @@
 const { createServer } = require('http')
 const next = require('next')
 
-const port = process.env.PORT || 3000
+const port = parseInt(process.env.PORT, 10) || 3000
 const app = next({ dev: false })
 const handle = app.getRequestHandler()
 
