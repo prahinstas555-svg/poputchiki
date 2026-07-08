@@ -8,7 +8,7 @@ const handle = app.getRequestHandler()
 app.prepare().then(() => {
   createServer((req, res) => {
     handle(req, res)
-  }).listen(port, () => {
+  }).listen(port, '0.0.0.0', () => {
     console.log(`> Ready on port ${port}`)
   })
 })
