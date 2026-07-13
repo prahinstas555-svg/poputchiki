@@ -49,6 +49,10 @@ export default function Home() {
           <nav className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
             <a href="/trips" className="hover:text-[#0e6ba8] transition">Поездки</a>
             <a href="/requests" className="hover:text-[#0e6ba8] transition">Заявки</a>
+            {/* НОВОЕ: ссылка на заправки в меню */}
+            <a href="/fuel" className="flex items-center gap-1 font-semibold text-[#0e6ba8] hover:text-[#16c0b0] transition">
+              <span className="fuel-flame">⛽</span> Бензин
+            </a>
             <a href="#how" className="hover:text-[#0e6ba8] transition">Как работает</a>
           </nav>
           {user ? (
@@ -107,6 +111,18 @@ export default function Home() {
             Находи попутчиков, дели расходы на дорогу и знакомься с новыми людьми.
             Из Симферополя в Ялту, из Керчи в Севастополь — быстро, удобно и недорого.
           </p>
+
+          {/* ===== НОВОЕ: ГОРЯЩАЯ КНОПКА "ГДЕ ЕСТЬ БЕНЗИН" ===== */}
+          <div className="animate-fadeUp animate-delay-2 mt-8 flex justify-center">
+            <a
+              href="/fuel"
+              className="fuel-glow group relative inline-flex items-center gap-3 px-8 py-4 rounded-2xl font-bold text-lg text-white bg-gradient-to-r from-[#f97316] via-[#f59e0b] to-[#f97316]"
+            >
+              <span className="fuel-flame text-2xl">⛽</span>
+              <span>Где есть бензин в Крыму?</span>
+              <span className="ml-1 px-2 py-0.5 rounded-full bg-white/25 text-xs font-semibold">LIVE</span>
+            </a>
+          </div>
 
           {/* ===== 4 БОЛЬШИЕ КНОПКИ ===== */}
           <div className="animate-fadeUp animate-delay-3 mt-10 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
@@ -356,6 +372,52 @@ export default function Home() {
         <p>Для связи: <a href="https://t.me/volskzz" target="_blank">Telegram @volskzz</a></p>
         <p>© 2026</p>
       </footer>
+
+      {/* ===== АНИМАЦИЯ ГОРЯЩЕЙ КНОПКИ БЕНЗИНА ===== */}
+      <style jsx global>{`
+        /* Пульсирующее свечение кнопки */
+        .fuel-glow {
+          box-shadow: 0 0 0 rgba(249, 115, 22, 0.6);
+          animation: fuelPulse 2s infinite;
+          transition: transform 0.2s ease;
+          background-size: 200% 100%;
+        }
+        .fuel-glow:hover {
+          transform: scale(1.06);
+          animation: fuelPulse 1s infinite, fuelShine 1.5s linear infinite;
+        }
+
+        @keyframes fuelPulse {
+          0% {
+            box-shadow: 0 0 8px rgba(249, 115, 22, 0.5),
+                        0 0 20px rgba(245, 158, 11, 0.4);
+          }
+          50% {
+            box-shadow: 0 0 22px rgba(249, 115, 22, 0.9),
+                        0 0 45px rgba(245, 158, 11, 0.7);
+          }
+          100% {
+            box-shadow: 0 0 8px rgba(249, 115, 22, 0.5),
+                        0 0 20px rgba(245, 158, 11, 0.4);
+          }
+        }
+
+        /* Бегущий блик при наведении */
+        @keyframes fuelShine {
+          0% { background-position: 200% 0; }
+          100% { background-position: -200% 0; }
+        }
+
+        /* Покачивание иконки пламени */
+        .fuel-flame {
+          display: inline-block;
+          animation: flameFlicker 1.2s ease-in-out infinite;
+        }
+        @keyframes flameFlicker {
+          0%, 100% { transform: rotate(-6deg) scale(1); }
+          50% { transform: rotate(6deg) scale(1.12); }
+        }
+      `}</style>
     </main>
   );
 }
