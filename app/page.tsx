@@ -273,6 +273,59 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ===== НАШИ ПАРТНЁРЫ ===== */}
+      <section id="partners" className="py-20 px-6 bg-gradient-to-b from-cyan-50/40 to-white">
+        <div className="max-w-5xl mx-auto text-center">
+          <span className="inline-block mb-4 px-4 py-1.5 rounded-full bg-cyan-50 text-[#0e6ba8] text-sm font-semibold border border-cyan-100">
+            🤝 Сотрудничество
+          </span>
+          <h2 className="text-4xl font-extrabold text-[#0a3d5c] mb-3">Наши партнёры</h2>
+          <p className="text-slate-500 mb-12 text-lg">Сообщества и проекты, с которыми мы дружим</p>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              {
+                name: "Крымский мост | Еду в Крым",
+                logo: "/partners/gov.png",
+                url: "https://vk.com/govkrimea",
+              },
+              {
+                name: "Tabor Racing Club | TRC | Drag racing",
+                logo: "/partners/tabor.png",
+                url: "https://vk.com/trcrace",
+              },
+            ].map((p) => (
+              <a
+                key={p.name}
+                href={p.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={p.name}
+                className="group flex flex-col items-center justify-center gap-4 bg-white rounded-3xl p-8 shadow-xl shadow-cyan-900/5 border border-slate-100 hover:-translate-y-2 hover:border-[#16c0b0] transition duration-300"
+              >
+                <div className="h-20 flex items-center justify-center">
+                  <img
+                    src={p.logo}
+                    alt={p.name}
+                    className="max-h-16 w-auto object-contain grayscale opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition duration-300"
+                  />
+                </div>
+                <span className="text-sm font-semibold text-[#0a3d5c] text-center">
+                  {p.name}
+                </span>
+              </a>
+            ))}
+          </div>
+
+          <p className="text-slate-400 text-sm mt-10">
+            Хотите стать партнёром?{" "}
+            <a href="https://t.me/volskzz" target="_blank" rel="noopener noreferrer" className="text-[#0e6ba8] font-semibold hover:underline">
+              Напишите нам →
+            </a>
+          </p>
+        </div>
+      </section>
+      
       {/* ===== ПОДВАЛ ===== */}
       <footer className="border-t border-slate-100 py-10 px-6">
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4 text-slate-400 text-sm">
