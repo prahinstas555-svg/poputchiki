@@ -19,8 +19,7 @@ export default function TripsPage() {
       const { data, error } = await supabase
         .from('trips')
         .select('*')
-        .order('views', { ascending: false })         // Сначала по популярности
-        .order('created_at', { ascending: false })    // Потом по новизне
+        .order('created_at', { ascending: false })   // Новые объявления сверху
 
       if (!error && data) setTrips(data)
       setLoading(false)
@@ -28,8 +27,13 @@ export default function TripsPage() {
     loadTrips()
   }, [])
 
-  const popular = trips[0]
-  const rest = trips.slice(1)
+  // Популярная = поездка с максимальным числом просмотров
+  const popular = trips.length
+    ? [...trips].sort((a, b) => (b.views ?? 0) - (a.views ?? 0))[0]
+    : null
+
+  // Остальные = все поездки, кроме популярной, в порядке "новые сверху"
+  const rest = popular ? trips.filter((t) => t.id !== popular.id) : trips
 
   // Общая карточка (для “остальных”)
   const TripCard = ({ trip }: { trip: any }) => (
@@ -162,7 +166,7 @@ export default function TripsPage() {
           </div>
         )}
 
-        {/* Остальные поездки */}
+        {/* Остальные поездки (новые сверху) */}
         <div className="flex flex-col gap-4">
           {rest.map((trip) => (
             <TripCard key={trip.id} trip={trip} />
